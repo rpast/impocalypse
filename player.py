@@ -1,6 +1,6 @@
 import pygame
-import asset
-import functions
+#import asset
+
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, image):
@@ -8,18 +8,17 @@ class Player(pygame.sprite.Sprite):
         #rect variables
         self.image = image
         self.rect = self.image.get_rect()
-        self.rect.y = 460
-        self.rect_y_cap = 460
+        self.rect.y = 200
+        self.rect_y_cap = 200
         self.rect.x = 1
         #movement variables
-        self.vel = 6
-        self.jump = False
-        self.jumpcount = 12
-        self.jumpcount_cap = 12
-        self.jumpblocker = 0
+        self.vel = 3
         self.left = False
-        self.right = True
-        self.walkblocker = 0
+        self.right = False
+        self.scrolling_x = 1
+        self.y_momentum = 0
+        self.air_timer = 0
+        self.vertical_momentum = 0
         #combat variables
         self.shoot_bullet = False
         self.throwblocker = 0
@@ -33,27 +32,37 @@ class Player(pygame.sprite.Sprite):
 
 
     def draw(self, screen):
-        if self.left:
-            functions.identify_death(self, screen, 0)
-            functions.identify_jump_attack(self, screen, 0)
-            functions.identify_jump_throw(self, screen, 0)
-            functions.identify_jump(self, screen, 0)
-            functions.identify_attack(self, screen, 0)
-            functions.identify_throw(self, screen, 0)
-            functions.identify_walk(self, screen, 0)
-                
-        else:
-            functions.identify_death(self, screen, 1)
-            functions.identify_jump_attack(self, screen, 1)
-            functions.identify_jump_throw(self, screen, 1)
-            functions.identify_jump(self, screen, 1)
-            functions.identify_attack(self, screen, 1)
-            functions.identify_throw(self, screen, 1)
-            functions.identify_walk(self, screen, 1)
+        screen.blit(self.image, (self.rect.x, self.rect.y))
+        #if self.left:
+        #    functions.animate_death(self, screen, 0)
+        #    functions.death_fall(self)
+        #    functions.animate_jump_attack(self, screen, 0)
+        #    functions.animate_jump_throw(self, screen, 0)
+        #    functions.animate_jump(self, screen, 0)
+        #    functions.animate_attack(self, screen, 0)
+        #    functions.animate_throw(self, screen, 0)
+        #    functions.animate_walk(self, screen, 0)
+        #        
+        #else:
+        #    functions.animate_death(self, screen, 1)
+        #    functions.death_fall(self)
+        #    functions.animate_jump_attack(self, screen, 1)
+        #    functions.animate_jump_throw(self, screen, 1)
+        #    functions.animate_jump(self, screen, 1)
+        #    functions.animate_attack(self, screen, 1)
+        #    functions.animate_throw(self, screen, 1)
+        #    functions.animate_walk(self, screen, 1)
 
-        #pygame.draw.rect(screen, (250,0,0), self.rect, 2)
+        #pygame.draw.rect(screen, (250,0,0), (self.rect.x, self.rect.y, 32, 32), 2)
     
     def mele_enemy_collision(self, player, enemy_container):
+        #for enemy in enemy_container:
+        #    if self.rect.y > enemy.rect.y - self.rect.top:
+        #        self.y_momentum = -self.y_momentum
+        #    else:
+        #        self.y_momentum += 0.2
+        #    self.rect.y += self.y_momentum
+
         if self.attack == True:
             for enemy in enemy_container:
                 if pygame.sprite.collide_rect(player, enemy):
