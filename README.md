@@ -7,7 +7,3 @@ features to be added:
 - [x] spritesheet reading
 - [ ] spritesheet based animation
 
-
-
-![ImpocalypseGIF](https://github.com/nefiu/impocalypse/blob/impocalypse-new-features/demoooo.gif)
-
