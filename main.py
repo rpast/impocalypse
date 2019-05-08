@@ -198,11 +198,4 @@ class CreditsScene(SceneBase):
         text = font.render("IMPS & ASSASIN", 1, (250, 250, 250), )
         screen.blit(text, (320, 250))
 
-
-#kazda scena bedzie roznic sie:
-#iloscia i rodzajem potworów
-#tłem
-#bloka<lmi 
-#przedmiotami
-
 functions.run_game(800, 600, 27, TitleScene())
