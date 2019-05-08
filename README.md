@@ -3,7 +3,7 @@ pygame platformer - features branch
 
 features to be added:
 - [x] tiles
-- [] seamless map scrolling
+- [ ] seamless map scrolling
 - [x] spritesheet reading
-- [] spritesheet based animation
+- [ ] spritesheet based animation
 
